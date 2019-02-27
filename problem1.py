@@ -32,13 +32,15 @@ Expected Answer for 1000 - 233168
 
 """
 
+
 def sum_multiples(max):
     sum = 0
     for x in range(int(max)):
         if ((x % 3) == 0) or ((x % 5) == 0):
             sum += x
-    
+
     print('Sum of mutiples of 3 and 5 upto {0} is {1}'.format(max, sum))
+
 
 max = input('Please enter max value upto which to sum multiples of 3 and 5 : ')
 sum_multiples(max)
