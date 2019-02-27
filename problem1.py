@@ -27,6 +27,9 @@ Else will need variables for
 2b. Which multiples ( In this case (3 & 5))
 2c. Accordingly the logic for deciding on multiples will change
 
+Result : 
+Expected Answer for 1000 - 233168
+
 """
 
 def sum_multiples(max):
