@@ -32,7 +32,6 @@ fib_array = {0:0, 1:1}
 def fib(n):
     if n not in fib_array:
         fib_array[n] = fib(n-1) + fib(n-2)
-        #print('Fib value of {0} is {1}'.format(n, fib_array[n]))        
     return fib_array[n]
 
 def sum_even_fibonnaci(max):
@@ -43,7 +42,6 @@ def sum_even_fibonnaci(max):
         fib_value = fib(x)  
         if (fib_value <= max):
             if (fib_value % 2) == 0:
-                #print('Adding this even value --  ', fib_value)
                 sum_even += fib_value
             x += 1
         else:
