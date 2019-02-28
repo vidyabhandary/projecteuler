@@ -28,30 +28,29 @@ Expected Answer for 4000000 - 4613732
 
 """
 
-fib_array = {0: 0, 1: 1}
 
-
-def fib(n):
-    if n not in fib_array:
-        fib_array[n] = fib(n-1) + fib(n-2)
-    return fib_array[n]
+def fibonacci():
+    current_num, next_num = 0, 1
+    while True:
+        current_num, next_num = next_num, current_num + next_num
+        yield current_num
 
 
 def sum_even_fibonnaci(max):
     sum_even = 0
-    x = 0
+    fib_gen = fibonacci()
+    fib_value = fib_gen.__next__()
 
-    while True:
-        fib_value = fib(x)
-        if (fib_value <= max):
-            if (fib_value % 2) == 0:
-                sum_even += fib_value
-            x += 1
-        else:
-            break
+    while (fib_value <= max):
+        if (fib_value % 2) == 0:
+            sum_even += fib_value
+
+        fib_value = fib_gen.__next__()
     print('Sum of even fibonnaci numbers upto {0} is {1}'.format(
         max, sum_even))
 
+
 max = int(input(
     'Please enter max value upto which to sum even fibonacci numbers : ').strip())
+
 sum_even_fibonnaci(max)
