@@ -28,16 +28,16 @@ Expected Answer for 4000000 - 4613732
 
 ############## Timing info
 
-Added code to time summing of even fibonacci numbers using array and
+Added code to time summing of even fibonacci numbers using dictionary and
 generator
 
 Found that using a generator was faster 
 
-problem2_array.py
+problem2_dict.py
 Sum of even fibonnaci numbers upto 10 is 10
 --- 2.6695196628570557 seconds ---
 
-problem2_array.py
+problem2_dict.py
 Sum of even fibonnaci numbers upto 4000000 is 4613732
 --- 1.6634728908538818 seconds ---
 
@@ -55,14 +55,14 @@ Sum of even fibonnaci numbers upto 4000000 is 4613732
 """
 import time
 start_time = time.time()
-fib_array = {0: 0, 1: 1}
+fib_dictionary = {0: 0, 1: 1}
 
 
 def fib(n):
 
-    if n not in fib_array:
-        fib_array[n] = fib(n-1) + fib(n-2)
-    return fib_array[n]
+    if n not in fib_dictionary:
+        fib_dictionary[n] = fib(n-1) + fib(n-2)
+    return fib_dictionary[n]
 
 
 def sum_even_fibonnaci(max):
