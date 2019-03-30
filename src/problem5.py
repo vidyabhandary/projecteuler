@@ -88,8 +88,8 @@ def get_factors(number):
 
 def count_primes(factors):
     prime_count = {}
-    for i in factors:
-        prime_count[i] = factors.count(i)
+
+    prime_count = {i: factors.count(i) for i in factors}
 
     return prime_count
 
@@ -170,6 +170,8 @@ if __name__ == '__main__':
 
     num_limit = 20
 
+    lcm = lcm(num_limit)
+
     # Expected answer - 232792560
-    print(f'The smallest positive number that is evenly divisible by numbers from 1 to {num_limit} ', lcm(
-        num_limit))
+    print(
+        f'The smallest positive number that is evenly divisible by numbers from 1 to {num_limit} - {lcm:,}')
