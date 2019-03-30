@@ -72,6 +72,8 @@ def get_factors(number):
             if mod_number % i == 0:
                 factors.append(i)
                 mod_number = mod_number // i
+                # To restart getting the prime factors for 
+                # the new mod_number
                 i = 2
             else:
                 i += 1
