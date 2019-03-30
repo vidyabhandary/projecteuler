@@ -123,45 +123,24 @@ def count_all_factors(num_limit):
             else:
                 max_of_factors[key] = value
 
-    return all_factors, max_of_factors
+    return max_of_factors
 
-# Based on the count of each prime number upto the number limit -
-# retain that prime factor for that many counts - these are the LCM factors
-
-
-def lcm_factors(all_numbers, max_primes):
-
-    for key, value in max_primes.items():
-
-        # Every prime factor of every number till num_limit
-        count_all = all_numbers.count(key)
-
-        # If count of prime factor is not equal to max count for that prime
-        # factor
-        if count_all != value:
-            # Count is greater than max allowed for that prime factor
-            if count_all > value:
-                for i in range(count_all - value):
-                    all_numbers.remove(key)
-            # Count is lesser than max allowed for that prime factor
-            else:
-                for i in range(count_all - value):
-                    all_numbers.append(key)
-
-    return all_numbers
-
-# Get the count of the prime factors, create list of these factors and multiply
-# to give the LCM or smallest positive number divisible by the range of numbers
+# Get the max count of the prime factors, and with this count,
+# raise the prime factors to this count  and then return the LCM
 
 
 def lcm(max_number):
-    all_factors, max_of_factors = count_all_factors(max_number)
-    lcm_numbers = lcm_factors(all_factors, max_of_factors)
 
-    # Get LCM
+    max_of_factors = count_all_factors(max_number)
+
+    # Based on the max count of each prime number which is the exponent
+    # for each prime factor - we multiply each prime factor that many times
+    # We raise prime factor to the max exponent value obtained
+
     lcm = 1
-    for num in lcm_numbers:
-        lcm *= num
+
+    for key, value in max_of_factors.items():
+        lcm *= key ** value
 
     return lcm
 
