@@ -89,7 +89,6 @@ def prime_divisors(number, primes):
         return [1]
 
     prime_factors = []
-    i = 0
 
     # Number theory - Divisors can be limited till square root of the number
     limit = math.ceil(math.sqrt(number))
@@ -104,9 +103,7 @@ def prime_divisors(number, primes):
         else:
             break
 
-        i += 1
-
-    # Add the last prime divisor 
+    # Add the last prime divisor
     if number not in [0, 1]:
         prime_factors.append(number)
 
