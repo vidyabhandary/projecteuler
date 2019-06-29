@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Jun 29 10:11:02 2019
+Created on Sat Jun 29 12:04:02 2019
 
 @author: Vidya
 
@@ -29,7 +29,7 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
     
 Result : 
 
-Expected Answer - 837799
+Expected Answer - 837799 with its chain counter = 525
 
 """
 
@@ -38,19 +38,29 @@ import time
 collatz_seq = {1: 1}
 
 
-def colatz_number(number):
+def colatz_counter(number):
+    ctr = 0
+    collatz_number = number
 
-    if number in collatz_seq.keys():
-        return collatz_seq[number]
-    else:
+    if collatz_number in collatz_seq.keys():
+        ctr += collatz_seq[collatz_number]
+        return ctr
 
+    while number >= 1:
+
+        if number in collatz_seq.keys():
+            ctr += collatz_seq[number]
+            collatz_seq[collatz_number] = ctr
+            return ctr
+
+        ctr += 1
         if number % 2 == 0:
-            collatz_num = int(number / 2)
+            number = int(number / 2)
         else:
-            collatz_num = int((3 * number) + 1)
+            number = int((3 * number) + 1)
 
-        collatz_seq[number] = collatz_num
-    return collatz_num
+    collatz_seq[collatz_number] = ctr
+    return ctr
 
 
 if __name__ == '__main__':
@@ -58,22 +68,15 @@ if __name__ == '__main__':
     start_time = time.time()
 
     max_limit = 1000000
-
     max_collatz_number = 1
     max_counter = 0
 
     for i in range(1, max_limit):
 
-        col_next_num = i
-        counter = 1
-
-        while col_next_num > 1:
-            col_next_num = colatz_number(col_next_num)
-            counter += 1
+        counter = colatz_counter(i)
 
         if counter > max_counter:
             max_counter = counter
-            #print('\nMax counter is ', max_counter)
             max_collatz_number = i
 
     total_time = time.time() - start_time
