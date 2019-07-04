@@ -97,7 +97,7 @@ def binomialPath(n, k):
 
 if __name__ == '__main__':
 
-    # Using recursive method for a lattice of 15
+    # Using recursive method for a lattice of 14
     lattice = [14, 14]
 
     start_time = time.time()
